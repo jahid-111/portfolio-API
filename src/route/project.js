@@ -1,9 +1,7 @@
 const express = require("express");
+const handleGetProject = require("../controller/handleAllProject");
 const router = express.Router();
 
-router.get("/", function getData(req, res) {
-  console.log("The data");
-  res.json("Data received"); // Respond to the request
-});
+router.get("/", handleGetProject);
 
 module.exports = router;
