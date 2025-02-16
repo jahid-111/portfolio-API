@@ -1,4 +1,4 @@
-const Project = require("../../services/mongoDb/schema/projectSchema");
+const Project = require("../models/projectSchema");
 
 async function handleGetProject(req, res) {
   try {

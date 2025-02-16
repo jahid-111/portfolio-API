@@ -1,5 +1,5 @@
 const express = require("express");
-const Project = require("../../services/mongoDb/schema/projectSchema");
+const Project = require("../models/projectSchema");
 
 const router = express.Router();
 
