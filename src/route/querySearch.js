@@ -3,7 +3,7 @@ const Project = require("../models/projectSchema");
 
 const router = express.Router();
 
-router.get("/search", async function handleSearchProject(req, res) {
+router.get("/", async function handleSearchProject(req, res) {
   try {
     const { q } = req.query;
 
