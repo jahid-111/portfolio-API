@@ -1,11 +1,8 @@
 const express = require("express");
-const Project = require("../models/projectSchema");
+const { handleGetTechnologies } = require("../controller/handleTechnologies");
 
 const router = express.Router();
 
-router.get("", async function handleGetTechnologies(req, res) {
-  const technologies = await Project.distinct("technologies");
-  res.json(technologies);
-});
+router.get("", handleGetTechnologies);
 
 module.exports = router;

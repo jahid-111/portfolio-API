@@ -1,11 +1,9 @@
 const express = require("express");
-const Expertise = require("../models/expertiseSchema");
+
+const { handleGetExpertise } = require("../controller/handleExpertise");
 
 const router = express.Router();
 
-router.get("", async function handleGetExpertise(req, res) {
-  const expertise = await Expertise.find({});
-  res.json(expertise);
-});
+router.get("", handleGetExpertise);
 
 module.exports = router;

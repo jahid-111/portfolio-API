@@ -1,11 +1,9 @@
 const express = require("express");
-const BlogData = require("../models/blogSchema");
+
+const { handleGetAllBlog } = require("../controller/handleBlog");
 
 const router = express.Router();
 
-router.get("", async function handleGetAllBlog(req, res) {
-  const blogs = await BlogData.find({});
-  res.json(blogs);
-});
+router.get("", handleGetAllBlog);
 
 module.exports = router;
