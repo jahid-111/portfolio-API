@@ -12,6 +12,8 @@ dbConnect();
 
 const app = express();
 
+app.use(express.urlencoded({ extended: false }));
+
 app.use("/project", projectData);
 app.use("/skills", skillsData);
 app.use("/expertise", expertiseData);
