@@ -60,4 +60,24 @@ async function handleEditProject(req, res, next) {
   }
 }
 
-module.exports = { handleGetProject, handlePostProject, handleEditProject };
+async function handleDeleteProject(req, res, next) {
+  try {
+    const deleteProject = await Project.findByIdAndDelete(req.params.id);
+
+    if (!deleteProject) {
+      return res.status(404).json({ error: "Project not found." });
+    }
+
+    res.status(204).end(); // 204 No Content
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+}
+
+module.exports = {
+  handleGetProject,
+  handlePostProject,
+  handleEditProject,
+  handleDeleteProject,
+};
