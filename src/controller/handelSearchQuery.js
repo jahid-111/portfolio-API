@@ -1,6 +1,6 @@
 const Project = require("../models/projectSchema");
 
-async function handleSearchProject(req, res) {
+async function handleSearchProject(req, res, next) {
   try {
     const { q } = req.query;
 
@@ -15,9 +15,9 @@ async function handleSearchProject(req, res) {
       : {};
     const projects = await Project.find(query);
     console.log(query);
-    res.json(projects);
+    res.status(200).json({ success: true, data: projects });
   } catch (error) {
-    res.status(500).json({ error: "Internal Server Error" });
+    next(error);
   }
 }
 

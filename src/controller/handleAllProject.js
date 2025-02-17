@@ -1,13 +1,12 @@
 const Project = require("../models/projectSchema");
 
-async function handleGetProject(req, res) {
+async function handleGetProject(req, res, next) {
   try {
     const resp = await Project.find({});
-    console.log("The data");
     res.json(resp); // Respond to the request
   } catch (err) {
     console.error(err);
-    res.status(500).send("Server error");
+    next(err);
   }
 }
 
