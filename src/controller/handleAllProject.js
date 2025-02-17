@@ -34,4 +34,30 @@ async function handlePostProject(req, res, next) {
   }
 }
 
-module.exports = { handleGetProject, handlePostProject };
+async function handleEditProject(req, res, next) {
+  try {
+    const { title, description, thumbnail, liveLink, technologies } = req.body;
+
+    // Ensure `technologies` is always an array
+    if (!Array.isArray(technologies)) {
+      return res.status(400).json({ error: "Technologies must be an array." });
+    }
+
+    const editProject = await Project.findByIdAndUpdate(
+      req.params.id,
+      { title, description, thumbnail, liveLink, technologies },
+      { new: true } // Returns updated document
+    );
+
+    if (!editProject) {
+      return res.status(404).json({ error: "Project not found." });
+    }
+
+    res.status(200).json(editProject); // 200 OK
+  } catch (err) {
+    console.error(err);
+    next(err); // Pass error to global error handler
+  }
+}
+
+module.exports = { handleGetProject, handlePostProject, handleEditProject };
