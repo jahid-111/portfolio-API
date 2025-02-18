@@ -49,12 +49,6 @@ const sectionSchema = new mongoose.Schema({
 });
 
 const blogDataSchema = new mongoose.Schema({
-  id: {
-    type: Number,
-    required: true,
-    unique: true,
-    description: "Unique identifier for each blog post",
-  },
   category: {
     type: String,
     required: true,

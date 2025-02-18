@@ -1,5 +1,5 @@
 const express = require("express");
-
+const cors = require("cors");
 const projectData = require("./src/route/project");
 const skillsData = require("./src/route/skills");
 const expertiseData = require("./src/route/expertise");
@@ -11,6 +11,8 @@ const dbConnect = require("./services/mongoDb/dbConnection");
 dbConnect();
 
 const app = express();
+app.use(cors());
+app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
 

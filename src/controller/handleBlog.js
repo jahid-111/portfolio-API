@@ -32,4 +32,25 @@ async function handleGetBlogById(req, res, next) {
     next(error);
   }
 }
-module.exports = { handleGetAllBlog, handleGetBlogById };
+
+async function handleAddBlogContent(req, res, next) {
+  try {
+    const { category, title, subtitle, tags, publishedDate, sections } =
+      req.body;
+
+    const post = await BlogData.create({
+      category,
+      title,
+      subtitle,
+      tags,
+      publishedDate,
+      sections,
+    });
+
+    res.status(201).json({ success: "post", data: post });
+  } catch (error) {
+    next(error);
+  }
+}
+
+module.exports = { handleGetAllBlog, handleGetBlogById, handleAddBlogContent };
