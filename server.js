@@ -29,5 +29,5 @@ app.use("/api/search", queryData);
 app.use(errorHandler);
 
 app.listen(PORT, () => {
-  console.log("Server is running on ➡︎❤️‍🔥http://localhost:3000/project");
+  console.log("Server is running on ➡︎❤️‍🔥http://localhost:3000/api/project");
 });
