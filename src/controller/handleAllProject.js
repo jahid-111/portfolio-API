@@ -71,7 +71,7 @@ async function handleDeleteProject(req, res, next) {
     res.status(204).end(); // 204 No Content
   } catch (err) {
     console.error(err);
-    next(err);
+    next(err); // Pass error to global error handler
   }
 }
 
