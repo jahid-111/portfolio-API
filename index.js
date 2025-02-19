@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
+
 const projectData = require("./src/route/project");
 const skillsData = require("./src/route/skills");
 const expertiseData = require("./src/route/expertise");
