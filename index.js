@@ -15,8 +15,13 @@ const dbConnect = require("./services/mongoDb/dbConnection");
 dbConnect();
 
 const app = express();
-
+const rateLimit = require("express-rate-limit");
 const PORT = process.env.PORT || 3000;
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per window
+  message: "Too many requests from this IP, please try again later.",
+});
 
 // CORS configuration for deployment
 app.use(
@@ -31,8 +36,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Root route for health check
-app.get("/", (req, res) => {
-  res.json({ status: `Server is running ${PORT}` });
+app.get("/", apiLimiter, (req, res) => {
+  res.json({
+    status: " 🌍 Server is running ✅ ",
+    environment: process.env.NODE_ENV || "development",
+    main: "api",
+    routes: [
+      "/api/project",
+      "/api/skills",
+      "/api/expertise",
+      "/api/blog",
+      "/api/search",
+    ],
+  });
 });
 
 // API routes

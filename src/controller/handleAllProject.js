@@ -1,5 +1,6 @@
 const Project = require("../models/projectSchema");
 
+require("dotenv").config();
 async function handleGetProject(req, res, next) {
   try {
     const resp = await Project.find({});
@@ -11,7 +12,17 @@ async function handleGetProject(req, res, next) {
 }
 
 async function handlePostProject(req, res, next) {
+  const author = req.body.author;
   try {
+    if (
+      !author ||
+      author.name !== process.env.AUTHOR_NAME ||
+      process.env.PASSWORD !== author.password
+    ) {
+      return res
+        .status(401)
+        .json({ message: "Invalid author credentials or not Authorized" });
+    }
     const { title, description, thumbnail, liveLink, technologies } = req.body;
 
     // Ensure `technologies` is always an array
@@ -35,7 +46,17 @@ async function handlePostProject(req, res, next) {
 }
 
 async function handleEditProject(req, res, next) {
+  const author = req.body.author;
   try {
+    if (
+      !author ||
+      author.name !== process.env.AUTHOR_NAME ||
+      process.env.PASSWORD !== author.password
+    ) {
+      return res
+        .status(401)
+        .json({ message: "Invalid author credentials or not Authorized" });
+    }
     const { title, description, thumbnail, liveLink, technologies } = req.body;
 
     // Ensure `technologies` is always an array
@@ -61,7 +82,18 @@ async function handleEditProject(req, res, next) {
 }
 
 async function handleDeleteProject(req, res, next) {
+  const author = req.body.author;
   try {
+    if (
+      !author ||
+      author.name !== process.env.AUTHOR_NAME ||
+      process.env.PASSWORD !== author.password
+    ) {
+      return res
+        .status(401)
+        .json({ message: "Invalid author credentials or not Authorized" });
+    }
+
     const deleteProject = await Project.findByIdAndDelete(req.params.id);
 
     if (!deleteProject) {

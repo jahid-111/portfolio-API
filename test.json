@@ -1,0 +1,136 @@
+{
+    "_id": "67b512005882ed7c9193f329",
+    "category": "Technology 3",
+    "title": "Introduction to JavaScript",
+    "subtitle": "A Beginner's Guide to JavaScript Fundamentals",
+    "tags": [
+        "JavaScript",
+        "Web Development",
+        "Programming"
+    ],
+    "publishedDate": "2025-02-18T10:00:00.000Z",
+    "sections": [
+        {
+            "heading": "What is JavaScript?",
+            "content": [
+                "JavaScript is a versatile programming language used for web development.",
+                "It allows developers to create interactive and dynamic web pages."
+            ],
+            "subSections": [
+                {
+                    "heading": "History of JavaScript",
+                    "content": [
+                        "JavaScript was created in 1995 by Brendan Eich while working at Netscape.",
+                        "It was initially named Mocha, later renamed to LiveScript, and finally JavaScript."
+                    ],
+                    "listItems": [
+                        "Created in 1995",
+                        "Initially called Mocha",
+                        "Renamed to JavaScript"
+                    ],
+                    "codeExamples": [
+                        "console.log('Hello, JavaScript!');"
+                    ],
+                    "explanation": [
+                        "This code prints 'Hello, JavaScript!' to the console."
+                    ],
+                    "_id": "67b512005882ed7c9193f32b"
+                }
+            ],
+            "listItems": [
+                "Used for both frontend and backend development",
+                "Supports object-oriented, functional, and event-driven programming"
+            ],
+            "codeExamples": [
+                "let x = 10;",
+                "console.log(x);"
+            ],
+            "explanation": [
+                "This code declares a variable `x` and assigns it a value of 10.",
+                "The `console.log(x);` statement prints the value of `x`."
+            ],
+            "_id": "67b512005882ed7c9193f32a"
+        },
+        {
+            "heading": "JavaScript Syntax",
+            "content": [
+                "JavaScript syntax defines how programs are structured and written.",
+                "It includes variables, functions, loops, and conditionals."
+            ],
+            "subSections": [
+                {
+                    "heading": "Variables in JavaScript",
+                    "content": [
+                        "JavaScript provides three ways to declare variables: var, let, and const.",
+                        "Variables declared with `let` and `const` are block-scoped."
+                    ],
+                    "listItems": [
+                        "`var` - function-scoped",
+                        "`let` - block-scoped",
+                        "`const` - cannot be reassigned"
+                    ],
+                    "codeExamples": [
+                        "let name = 'Alice';",
+                        "const pi = 3.14;"
+                    ],
+                    "explanation": [
+                        "`let name = 'Alice';` declares a variable that can be reassigned.",
+                        "`const pi = 3.14;` declares a constant that cannot be changed."
+                    ],
+                    "_id": "67b512005882ed7c9193f32d"
+                }
+            ],
+            "listItems": [
+                "JavaScript is case-sensitive",
+                "Uses semicolons to terminate statements",
+                "Functions can be declared using `function` keyword"
+            ],
+            "codeExamples": [
+                "function greet() { return 'Hello, world!'; }"
+            ],
+            "explanation": [
+                "This function `greet()` returns the string 'Hello, world!'."
+            ],
+            "_id": "67b512005882ed7c9193f32c"
+        },
+        {
+            "heading": "JavaScript in the Browser",
+            "content": [
+                "JavaScript is commonly used in browsers to add interactivity.",
+                "It can manipulate the DOM and handle events."
+            ],
+            "subSections": [
+                {
+                    "heading": "DOM Manipulation",
+                    "content": [
+                        "The Document Object Model (DOM) allows JavaScript to interact with HTML elements.",
+                        "JavaScript can dynamically update the webpage using the DOM."
+                    ],
+                    "listItems": [
+                        "Access elements with `document.querySelector`",
+                        "Modify content using `.innerHTML`",
+                        "Handle events with `.addEventListener`"
+                    ],
+                    "codeExamples": [
+                        "document.getElementById('demo').innerHTML = 'Hello, JavaScript!';"
+                    ],
+                    "explanation": [
+                        "This code changes the content of the element with ID `demo` to 'Hello, JavaScript!'."
+                    ],
+                    "_id": "67b512005882ed7c9193f32f"
+                }
+            ],
+            "listItems": [
+                "JavaScript can handle user interactions like clicks and input.",
+                "It can fetch data from servers using AJAX or Fetch API."
+            ],
+            "codeExamples": [
+                "fetch('https://api.example.com/data').then(response => response.json()).then(data => console.log(data));"
+            ],
+            "explanation": [
+                "This code fetches data from an API and logs it to the console."
+            ],
+            "_id": "67b512005882ed7c9193f32e"
+        }
+    ]
+}

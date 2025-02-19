@@ -1,5 +1,5 @@
 const BlogData = require("../models/blogSchema");
-
+require("dotenv").config();
 async function handleGetAllBlog(req, res, next) {
   try {
     const blogs = await BlogData.find({});
@@ -34,7 +34,18 @@ async function handleGetBlogById(req, res, next) {
 }
 
 async function handleAddBlogContent(req, res, next) {
+  // console.log("author", req.body.author);
+  const author = req.body.author;
   try {
+    if (
+      !author ||
+      author.name !== process.env.AUTHOR_NAME ||
+      process.env.PASSWORD !== author.password
+    ) {
+      return res
+        .status(401)
+        .json({ message: "Invalid author credentials or not Authorized" });
+    }
     const { category, title, subtitle, tags, publishedDate, sections } =
       req.body;
 
@@ -54,6 +65,16 @@ async function handleAddBlogContent(req, res, next) {
 }
 
 async function handleDeleteBlogById(req, res, next) {
+  const author = req.body.author;
+  if (
+    !author ||
+    author.name !== process.env.AUTHOR_NAME ||
+    process.env.PASSWORD !== author.password
+  ) {
+    return res.status(401).json({
+      message: "Invalid author credentials or not Authorized",
+    });
+  }
   try {
     const deleteBlog = await BlogData.findByIdAndDelete(req.params.id);
     if (!deleteBlog) {
@@ -73,7 +94,17 @@ async function handleDeleteBlogById(req, res, next) {
 }
 
 async function handleEditBlogById(req, res, next) {
+  const author = req.body.author;
   try {
+    if (
+      !author ||
+      author.name !== process.env.AUTHOR_NAME ||
+      process.env.PASSWORD !== author.password
+    ) {
+      return res
+        .status(401)
+        .json({ message: "Invalid author credentials or not Authorized " });
+    }
     const { category, title, subtitle, tags, publishedDate, sections } =
       req.body;
 

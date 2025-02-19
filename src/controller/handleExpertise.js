@@ -1,4 +1,5 @@
 const Expertise = require("../models/expertiseSchema");
+require("dotenv").config();
 
 async function handleGetExpertise(req, res, next) {
   try {
@@ -14,7 +15,17 @@ async function handleGetExpertise(req, res, next) {
 }
 
 async function handleAddExpertise(req, res, next) {
+  const author = req.body.author;
   try {
+    if (
+      !author ||
+      author.name !== process.env.AUTHOR_NAME ||
+      process.env.PASSWORD !== author.password
+    ) {
+      return res
+        .status(401)
+        .json({ message: "Invalid author credentials or not Authorized" });
+    }
     const expertise = await Expertise.create(req.body);
     await expertise.save();
     res.json(expertise);
@@ -26,7 +37,17 @@ async function handleAddExpertise(req, res, next) {
 async function handleEditExpertise(req, res, next) {
   const { name, description } = req.body;
 
+  const author = req.body.author;
   try {
+    if (
+      !author ||
+      author.name !== process.env.AUTHOR_NAME ||
+      process.env.PASSWORD !== author.password
+    ) {
+      return res
+        .status(401)
+        .json({ message: "Invalid author credentials or not Authorized" });
+    }
     const editExpertise = await Expertise.findByIdAndUpdate(
       req.params.id,
       { name, description },
@@ -44,7 +65,17 @@ async function handleEditExpertise(req, res, next) {
 }
 
 async function handleDeleteExpertise(req, res, next) {
+  const author = req.body.author;
   try {
+    if (
+      !author ||
+      author.name !== process.env.AUTHOR_NAME ||
+      process.env.PASSWORD !== author.password
+    ) {
+      return res
+        .status(401)
+        .json({ message: "Invalid author credentials or not Authorized" });
+    }
     const deleteExpertise = await Expertise.findByIdAndDelete(req.params.id);
     if (!deleteExpertise) {
       return res.status(404).json({ error: "Expertise not found." });
